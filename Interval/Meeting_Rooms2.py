@@ -4,20 +4,25 @@ class Interval:
         self.end = end
 
 
-def can_attend_meetings(intervals) -> int:
-    count = 0
-    intervals.sort(key=lambda x: x.start)  # sort the list by the 0th item in each tuple
-    for i in range(1, len(intervals)):
-        i1 = intervals[i-1]
-        i2 = intervals[i]
-        if i1.end > i2.start:
+def can_attend_meetings(intervals) -> int:  # [(0, 30)(5, 10)(10, 20)]
+    start = sorted([i.start for i in intervals])  # start = [0, 5, 10]
+    end = sorted([i.end for i in intervals])  # end = [10, 20, 30]
+    result, count = 0, 0
+    s, e = 0, 0
+    while s < len(intervals):
+        if start[s] < end[e]:
+            s += 1
             count += 1
-    return True
+            result = max(result, count)
+        else:
+            e += 1
+            count -= 1
+    return result
 
 
 meeting1 = Interval(0, 30)
 meeting2 = Interval(5, 10)
-meeting3 = Interval(15, 20)
+meeting3 = Interval(10, 20)
 
-result = can_attend_meetings([meeting1, meeting2, meeting3])
-print(result)
+print(can_attend_meetings([meeting1, meeting2, meeting3]))
+
