@@ -4,13 +4,14 @@ class Interval:
         self.end = end
 
 
-def can_attend_meetings(intervals) -> bool:
+def can_attend_meetings(intervals) -> int:
+    count = 0
     intervals.sort(key=lambda x: x.start)  # sort the list by the 0th item in each tuple
     for i in range(1, len(intervals)):
         i1 = intervals[i-1]
         i2 = intervals[i]
         if i1.end > i2.start:
-            return False
+            count += 1
     return True
 
 
