@@ -1,8 +1,6 @@
 def create_graph(edges):
     graph = {}
-    for array in edges:
-        a = array[0]
-        b = array[1]
+    for a, b in edges:
         if a not in graph:
             graph[a] = []
         if b not in graph:
@@ -23,5 +21,4 @@ e = [['i', 'j'],  # 'i': ['j', 'k'],
 #                   'n': ['o']
 #                              }
 
-
-graph = create_graph(e)
+print(create_graph(e))
