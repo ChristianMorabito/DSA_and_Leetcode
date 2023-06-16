@@ -10,13 +10,13 @@ def edge_to_list(edges):
     return adj_list
 
 
-def valid_tree(n, edges):
+def valid_tree_recursive(n, edges):
     adj_list = edge_to_list(edges)
     visited = set()
 
     def dfs(curr, prev):
         if curr in visited:
-            return False
+            return False  # means it's a loop, therefore, not valid tree
         visited.add(curr)
         for neighbor in adj_list[curr]:
             if neighbor == prev:
@@ -29,4 +29,4 @@ def valid_tree(n, edges):
 
 
 
-print(valid_tree(5, [[0, 1], [0, 2], [0, 3], [1, 4]]))
+print(valid_tree_recursive(5, [[0, 1], [0, 2], [0, 3], [1, 4]]))

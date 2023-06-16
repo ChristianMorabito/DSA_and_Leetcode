@@ -25,4 +25,3 @@ meeting2 = Interval(5, 10)
 meeting3 = Interval(10, 20)
 
 print(can_attend_meetings([meeting1, meeting2, meeting3]))
-
