@@ -1,41 +1,44 @@
-def set_matrix_zeroes(array):
-	ROWS, COLS = len(matrix), len(matrix[0])
-	flag_row = False
-	flag_col = False
+# The solution to this problem uses O(1) space complexity,
+# which makes this solution unique.
 
+def set_matrix_zeroes(array):
+
+	ROWS, COLS = len(array), len(array[0])
+	row_flag = False
+	col_flag = False
 
 	# Step 1)
 	for i in range(ROWS):
-		if matrix[i][0] == 0:
-			flag_row = True
+		if array[i][0] == 0:
+			row_flag = True
 
 	# Step 2)
-	for j in range(COLS):
-		if matrix[0][j] == 0:
-			flag_col = True
+	for i in range(ROWS):
+		if array[0][i] == 0:
+			col_flag = True
 
 	# Step 3)
 	for i in range(1, ROWS):
 		for j in range(1, COLS):
-			if matrix[i][j] == 0:
-				# Set corresponding 0th col & corresponding 0th row to 0
-				matrix[i][0] = matrix[0][j] = 0
+			if array[i][j] == 0:
+				array[0][j] = array[i][0] = 0
 
 	# Step 4)
 	for i in range(1, ROWS):
 		for j in range(1, COLS):
-			if matrix[i][0] == 0 or matrix[0][j] == 0:
-				matrix[i][j] = 0
+			if array[0][j] == 0 or array[i][0] == 0:
+				array[i][j] = 0
 
 	# Step 5)
-	if flag_row:
+	if row_flag:
 		for i in range(ROWS):
-			matrix[i][0] = 0
+			array[i][0] = 0
 
 	# Step 6)
-	if flag_col:
+	if col_flag:
 		for j in range(COLS):
-			matrix[0][j] = 0
+			array[0][j] = 0
+
 
 matrix = [
 	[1, 0, 1],
