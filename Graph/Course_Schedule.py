@@ -1,4 +1,5 @@
-def course_schedule(prerequisite_map, num_courses):
+def course_schedule(create_list, array, num_courses):
+    prerequisite_map = create_list(array, num_courses)
     visit_set = set()
 
     def dfs(crs):
@@ -13,15 +14,16 @@ def course_schedule(prerequisite_map, num_courses):
         visit_set.add(crs)
         for pre in prerequisite_map[crs]:
             if not dfs(pre):
-                return False
-        prerequisite_map[crs] = []
+                return False  # returning False ends this function & the main function too.
+        # make list empty because it's dfs did not return False, therefore it's path has been checked
+        prerequisite_map[crs] = []  # making this empty will allow the base case to return True.
         return True
 
+    # this loop is necessary to ensure that there are no isolated graphs.
     for course in range(num_courses):
         if not dfs(course):
             return False
     return True
-
 
 
 def create_adjacency_list(array, num_courses):
@@ -31,5 +33,4 @@ def create_adjacency_list(array, num_courses):
     return prerequisite_map
 
 
-pre_map = create_adjacency_list([[0, 1], [0, 2], [1, 3], [1, 4], [3, 4]], 5)
-print(course_schedule(pre_map, 5))
+print(course_schedule(create_adjacency_list, [[0, 1], [0, 2], [1, 3], [1, 4], [3, 4]], 5))
