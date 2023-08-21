@@ -1,5 +1,6 @@
 def course_schedule(create_list, array, num_courses):
     prerequisite_map = create_list(array, num_courses)
+    print(prerequisite_map)
     visit_set = set()
 
     def dfs(crs):
@@ -7,7 +8,7 @@ def course_schedule(create_list, array, num_courses):
         # if course has no prerequisites (list is empty), then it definitely can be completed
         if not prerequisite_map[crs]:
             return True
-        # if loop detected
+        # if cycle detected
         if crs in visit_set:
             return False
 
@@ -15,7 +16,8 @@ def course_schedule(create_list, array, num_courses):
         for pre in prerequisite_map[crs]:
             if not dfs(pre):
                 return False  # returning False ends this function & the main function too.
-        # make list empty because it's dfs did not return False, therefore it's path has been checked
+        # make list empty because it's dfs did not return False, therefore it's recursive path has been checked
+        # so it can be cleared (which coincides with the base case for True)
         prerequisite_map[crs] = []  # making this empty will allow the base case to return True.
         return True
 
