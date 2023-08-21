@@ -12,12 +12,12 @@ def pacific_atlantic(heights):
 		dfs(r, c - 1, visit, heights[r][c])
 
 	for col in range(COLS):
-		dfs(0, col, pacific, heights[0][col])
-		dfs(ROWS - 1, col, atlantic, heights[ROWS - 1][col])
+		dfs(0, col, pacific, 0)
+		dfs(ROWS - 1, col, atlantic, 0)
 
 	for row in range(ROWS):
-		dfs(row, 0, pacific, heights[row][COLS - 1])
-		dfs(row, COLS - 1, atlantic, heights[row][COLS - 1])
+		dfs(row, 0, pacific, 0)
+		dfs(row, COLS - 1, atlantic, 0)
 
 	result = [item for item in pacific if item in atlantic]
 	return result
