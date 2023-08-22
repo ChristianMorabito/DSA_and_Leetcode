@@ -19,7 +19,7 @@ public class PacificAtlanticWaterflow {
     HashSet<ArrayList<Integer>> pacific;
     HashSet<ArrayList<Integer>> atlantic;
 
-    public Solution() {
+    public PacificAtlanticWaterflow() {
         pacific = new HashSet<>();
         atlantic = new HashSet<>();
     }
