@@ -37,8 +37,10 @@ def create_list(word_list: list[str]):
             if word_1[j] != word_2[j]:
                 adjacency_list[word_1[j]].add(word_2[j])
                 break
+    print(adjacency_list)
     return adjacency_list
 
 
-alien_dictionary = ["wrt", "wrf", "er", "ett", "rftt"]  # "wertf"
+#
+alien_dictionary = ['aa', 'ab', 'ac', 'c', 'ca', 'cb', 'cc']
 print(alien_order(create_list(alien_dictionary)))
