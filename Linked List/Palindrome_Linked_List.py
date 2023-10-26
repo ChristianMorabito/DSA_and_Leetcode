@@ -27,7 +27,6 @@ def is_palindrome(head: Node):
 	return True
 
 
-
 node1 = Node(5)
 node2 = Node(1)
 node1.next = node2
