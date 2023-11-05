@@ -16,12 +16,11 @@ void freeArray() {
     free(stack.array);
 }
 
-void* push(char item) {
+void push(char item) {
     if (stack.currSize < stack.maxSize) {
         stack.array[stack.currSize] = item;
         stack.currSize++;
     }
-    return NULL;
 }
 
 char pop() {

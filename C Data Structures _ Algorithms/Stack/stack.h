@@ -6,7 +6,7 @@ typedef struct {
     int currSize;
     char* array;
     char (*pop)();
-    void* (*push)(char);
+    void (*push)(char);
 } Stack;
 
 extern Stack stack;
