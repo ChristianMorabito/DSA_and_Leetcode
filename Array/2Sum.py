@@ -2,7 +2,7 @@
 # 'difference value'. Then check if the 'difference value' is a key in the dictionary. 
 
 
-def two_sum_good(nums, target):  #  This is the GOOD iteration
+def two_sum_good(nums, target):  # This is the GOOD iteration
     prev_map = {}
     for i, n in enumerate(nums):
         diff = target - n
@@ -12,7 +12,7 @@ def two_sum_good(nums, target):  #  This is the GOOD iteration
     return
 
 
-def two_sum_bad(nums, target):  #  This is the BAD iteration
+def two_sum_bad(nums, target):  # This is the BAD iteration
     for i in range(len(nums)):
         for j in range(i+1, len(nums)):
             if nums[i] + nums[j] == target:
@@ -20,6 +20,6 @@ def two_sum_bad(nums, target):  #  This is the BAD iteration
     return
 
 
-two_sum_good([15, 7, 10, 11, ], 18))
+two_sum_good([15, 7, 10, 11], 18)
 
 

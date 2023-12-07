@@ -37,10 +37,10 @@ class BST:
         self.head = node
 
 
-def flip_dfs(head):  # DFS (Recursive)
+def flip_dfs_rec(head):  # DFS (Recursive)
     if not head:
         return
-    head.left, head.right = flip_dfs(head.right), flip_dfs(head.left)
+    head.left, head.right = flip_dfs_rec(head.right), flip_dfs_rec(head.left)
     return head
 
 
@@ -59,6 +59,17 @@ def flip_bfs(head):  # BFS (Iterative)
     return head
 
 
+def flip_dfs_iter(head: Node):  # DFS (Iterative)
+    stack = [head]
+    while stack:
+        curr = stack.pop()
+        if curr.right:
+            stack.append(curr.right)
+        if curr.left:
+            stack.append(curr.left)
+        curr.right, curr.left = curr.left, curr.right
+
+
 bst = BST()
 bst.insert(2)
 bst.insert(3)
@@ -66,7 +77,7 @@ bst.insert(1)
 bst.insert(4)
 
 # Invert Binary Tree
-flip_dfs(bst.head)  # DFS
+flip_dfs_rec(bst.head)  # DFS
 flip_bfs(bst.head)  # BFS
 
 
